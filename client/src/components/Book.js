@@ -3,7 +3,7 @@ import React from "react";
 
 function Book(props) {
     return(
-        <div className="book">
+        <div className="book mx-auto">
             <img className="img-fluid" src={props.thumbnail} alt="Book Jacket" />
             <h2>{props.title}</h2>
             <p>{props.synopsis}</p>
