@@ -20,7 +20,7 @@ app.use("/api", routes);
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Send every request to the React app
 // Define any API routes before this runs

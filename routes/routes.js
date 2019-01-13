@@ -8,12 +8,12 @@ router.get("/books"), (req, res) => {
     })
 }
 router.post("/books"), (req, res) => {
-    const info = {authors: req.body.authors, description: req.body.description,
-    image: req.body.image, link: req.body.link, title: req.body.title}
+    const info = {authors: req.body.authors, synopsis: req.body.synopsis,
+    thumbnail: req.body.thumbnail, link: req.body.link, title: req.body.title}
     db.Book.create(info)
     .then(function(book) {
         res.status(200).json(book);
-    })
+    }).catch(error => console.log(err))
 }
 router.delete("/books/:id"), (req,res) => {
     const id = req.params.id;
