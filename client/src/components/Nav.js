@@ -4,7 +4,7 @@ import "./style.css";
 
 function Nav() {
     return(
-        <div className="header">
+        <div className="header sticky-top">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark pl-0 mb-1">
                 <a className="navbar-brand" href="/">Google Books Search</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

@@ -29,3 +29,8 @@ h1 {
     background-color: #ffb6c1;
     color: black;
 }
+hr {
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+    border: 0;
+}

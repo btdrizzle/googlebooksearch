@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Nav from "./components/Nav";
 import Search from "./components/Search";
 import Saved from "./components/Saved";
-import "./components/style.css"
-import "./components/style.css"
+import "./components/style.css";
+
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
       <div className="container-fluid">
         <Nav />
-        <div className="col-11 mx-auto">
+        <div className="body col-11 mx-auto">
         <Route exact path="/" component={Search} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/saved" component={Saved} />

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Buttons from "./Button";
+import "./style.css";
 
 
 class SavedBook extends Component {
@@ -38,6 +39,7 @@ class SavedBook extends Component {
             function2={this.delete}
             buttonName2="Delete"
             />
+            <hr />
         </div>
     )
         }

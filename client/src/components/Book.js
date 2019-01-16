@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Buttons from "./Button";
+import "./style.css";
 
 
 
@@ -45,6 +46,7 @@ class Book extends Component {
             function2={this.save}
             buttonName2="Save"
             />
+            <hr />
         </div>
     )
         }
