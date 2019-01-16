@@ -18,13 +18,13 @@ var BookSchema = new Schema({
     required: true
     }
     ],
-  description: {
+  synopsis: {
     type: String,
-    required: true
+
     },
-  image: {
+  thumbnail: {
     type: String,
-    required: true
+
     },
   link: {
     type: String,

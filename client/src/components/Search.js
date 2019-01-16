@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Book from "./Book";
 import API from "./api/API";
+import "./style.css";
 
 class Search extends Component {
     constructor(props) {
@@ -37,10 +38,10 @@ class Search extends Component {
     render() {
         return(
             <div>
-                <h1>Search for Books on Google Books</h1>
+                <h1 className="mb-4">Search for Books on Google Books</h1>
                 <form className="form-inline">
-                    <input type="text" value={this.state.search} onChange={this.typing} name="search" className="mb-2" placeholder="Type a book title or subject to search!" />
-                    <button type="button" className="btn btn-success mb-2" onClick={this.searchButton}>Search</button>
+                    <input id="search" type="text" value={this.state.search} onChange={this.typing} name="search" className="mb-2 mr-3" placeholder="Type a book title or subject to search!" />
+                    <button type="submit" className="btn mb-2" onClick={this.searchButton}>Search</button>
                 </form>
                 <div className="books">
                 {!this.state.books ? <h3>Search Results for {this.state.searchCopy}</h3> : <br />}
@@ -51,7 +52,7 @@ class Search extends Component {
                     authors={book.volumeInfo.authors}
                     link={book.volumeInfo.previewLink}
                     title={book.volumeInfo.title}
-                    thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                    thumbnail={book.volumeInfo.imageLinks.thumbnail || "nothing"}
                     synopsis={book.volumeInfo.description}
                     saveRemove={this.saveRemove}
                     />

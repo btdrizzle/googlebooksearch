@@ -3,8 +3,7 @@ import axios from "axios";
 import Buttons from "./Button";
 
 
-
-class Book extends Component {
+class SavedBook extends Component {
     constructor(props) {
         super(props);
         this.state = {book: {}}
@@ -13,15 +12,9 @@ class Book extends Component {
         event.preventDefault();
         window.open(this.props.link);
     }
-    save = event => {
+    delete = event => {
         event.preventDefault();
-        axios.post("/api/books", {
-            title: this.state.book.title,
-            authors: this.state.book.authors,
-            thumbnail: this.state.book.thumbnail,
-            synopsis: this.state.book.synopsis,
-            link: this.state.book.link
-        }).then(response => {
+        axios.delete(`/api/books/${this.state.book.id}`).then(response => {
             this.props.saveRemove(this.state.book.id);
             console.log(response);
 
@@ -42,12 +35,12 @@ class Book extends Component {
             <Buttons
             function1={this.details}
             buttonName1="Details"
-            function2={this.save}
-            buttonName2="Save"
+            function2={this.delete}
+            buttonName2="Delete"
             />
         </div>
     )
         }
 }
 
-export default Book;
+export default SavedBook;
