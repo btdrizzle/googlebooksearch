@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import Book from "./Book";
 import API from "./api/API";
 import "./style.css";
+import connect from "../Socket";
 
 class Search extends Component {
     constructor(props) {
         super(props);
+
+
 
         this.state = {
             search: "",
@@ -24,7 +27,16 @@ class Search extends Component {
         event.preventDefault();
         API.searchBooks(this.state.search)
         .then(res => {
-            this.setState({books: res.data.items});
+            //Normalizing results as to not break react
+            const filtered = res.data.items.map(book => {
+                return ({id: book.id || "no id given",
+                title: book.volumeInfo.title || "No Title",
+                authors: book.volumeInfo.authors || "No Authors",
+                link: book.volumeInfo.previewLink || "#",
+                thumbnail: (book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '../placeholder.jpg'),
+                synopsis: book.volumeInfo.description || "no synopsis given"}
+            )})
+            this.setState({books: filtered});
         });
         this.setState({searchCopy: this.state.search});
         this.setState({search: ""})
@@ -49,11 +61,11 @@ class Search extends Component {
                     <Book
                     key={book.id}
                     id={book.id}
-                    authors={book.volumeInfo.authors}
-                    link={book.volumeInfo.previewLink}
-                    title={book.volumeInfo.title}
-                    thumbnail={book.volumeInfo.imageLinks.thumbnail || "nothing"}
-                    synopsis={book.volumeInfo.description}
+                    authors={book.authors}
+                    link={book.link}
+                    title={book.title}
+                    thumbnail={book.thumbnail}
+                    synopsis={book.synopsis}
                     saveRemove={this.saveRemove}
                     />
                 ))}

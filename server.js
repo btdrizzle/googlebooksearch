@@ -29,6 +29,13 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 }); 
 
-app.listen(PORT, function() {
+const server = app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+const io = require('socket.io')(server)
+
+io.on("connection", function(socket) {
+  socket.broadcast.emit("user connected");
+  
+})
