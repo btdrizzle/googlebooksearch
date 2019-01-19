@@ -38,7 +38,7 @@ class Book extends Component {
       return  (
         <div className="book mx-auto">
             <img className="img-fluid mb-2" src={this.props.thumbnail} alt="Book Jacket" />
-            <h2>{this.props.title} by {this.props.authors}</h2>
+            <h2>{this.props.title} by {this.props.authors.map(author => author + " ")}</h2>
             <p>{this.props.synopsis}</p>
             <Buttons
             function1={this.details}
